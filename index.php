@@ -1,38 +1,43 @@
 <?php
     # Задание №1
-    $a = 3;
-    $b = 7;
-    $h = 4;
-
-    $s = (($a + $b) / 2) * $h;
-
-    echo "<p>Площадь трапеции со сторонами <b>a = {$a}</b> и <b>b = {$b}</b> равна <b>{$s}</b></p>";
+    $year = readline('Введите год:');
+    if ($year >= 0 && $year <= 2021) {
+        if (($year % 4 == 0 && $year % 100 != 0) || $year % 400 == 0) {
+            echo "Год високосный\n";
+        } else {
+            echo "Год невисокосный\n";
+        }
+    } else {
+        echo "Введите год в диапазоне от 0 до 2021\n";
+    }
     
     # Задание №2
-    $number = str_split(541967);
+    $a = readline('Введите длину стороны A:');
+    $b = readline('Введите длину стороны B:');
+    $alpha_angle = readline('Введите угол альфа (от 1 до 90 градусов):');
 
-    $sum = 0;
-    $multiply = 1;
-
-    for ($i = 0; $i < count($number); $i += 2) {
-        $temp = strval($number[$i]) . strval($number[$i + 1]);
-        $sum += (int)$temp;
-    }
-    echo "Сложение: " . $sum . "<br />";
-
-    for ($i = 0; $i < count($number); $i += 3) {
-            $temp = strval($number[$i]) . strval($number[$i + 1]) . strval($number[$i + 2]);
-            $multiply *= (int)$temp;
+    if ($alpha_angle >= 1 && $alpha_angle <= 90) {
+        if ($a > 0 && $b > 0) {
+            if ($angle == 90) {
+                if ($a == $b) {
+                    echo "Фигура - квадрат\n";
+                } else {
+                    echo "Фигура - прямоугольник\n";
+                }
+                $s = $a * $b;
+            } else {
+                if ($a == $b) {
+                    echo "Фигура - ромб\n";
+                } else {
+                    echo "Фигура - параллелограмм\n";
+                }
+                $s = $a * $b * sin($alpha_angle);
+            }
+            echo "Площадь: {$s}\n";
+        } else {
+            echo "A и B должны быть больше 0\n";
         }
-    echo "Умножение: " . $multiply . "<br /> <br /> <br />";
-
-    # Задание №3
-    $text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel tempus erat. In sollicitudin nisl nisi, in cursus erat pulvinar et. In congue eleifend accumsan. Nam dictum nibh a justo iaculis, at hendrerit dui condimentum. Nulla et malesuada elit. Etiam eu dolor et nulla lobortis lacinia malesuada quis lacus. Aliquam nec nibh porta, vehicula justo id, sodales eros. Nulla facilisi. Nulla quis dui volutpat, mattis dolor massa ut, interdum nisl.';
-
-    $taggedText = "<li>" . str_replace('.', ';</li><li>', $text) . "</li>";
-
-    echo "<ol>";
-    echo preg_replace('~(<(.*)[^<>]*>\s*<\/\\2>)~i', '', $taggedText);
-    echo "</ol>";
-
+    } else {
+        echo "Введите угол от 0 до 90 градусов\n";
+    }
 ?>
