@@ -18,7 +18,7 @@
 
     if ($alpha_angle >= 1 && $alpha_angle <= 90) {
         if ($a > 0 && $b > 0) {
-            if ($angle == 90) {
+            if ($alpha_angle == 90) {
                 if ($a == $b) {
                     echo "Фигура - квадрат\n";
                 } else {
